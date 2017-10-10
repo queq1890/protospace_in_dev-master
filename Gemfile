@@ -16,6 +16,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'kaminari'
 gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
