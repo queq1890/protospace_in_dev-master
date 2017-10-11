@@ -9,8 +9,11 @@
           %h4#top-aligned-media.media-heading
             = @prototype.title
           .proto-user
-            by
-            = link_to "#{@prototype.user.name}", user_path(@prototype.user)
+          by
+          = link_to "#{@prototype.user.name}", user_path(@prototype.user)
+          .edit_and_delete_btns
+            = link_to 'edit'
+
             .degree
               = @prototype.user.position
   .row
