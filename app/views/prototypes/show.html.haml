@@ -11,6 +11,8 @@
           .proto-user
             by
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
+          .edit_and_delete_btns
+            = link_to "delete",
             .degree
               = @prototype.user.position
   .row
