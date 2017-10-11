@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: :show
+  before_action :set_prototype, only: [:show,:destroy]
 
   def index
     @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(3)
@@ -23,6 +23,8 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
+    if @prototype.user_id == current_user.id
+    @prototype.destroy
   end
 
   private
