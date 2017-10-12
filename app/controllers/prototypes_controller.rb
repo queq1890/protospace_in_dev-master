@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:show, :edit]
+  before_action :set_prototype, only: [:show, :edit, :update]
 
   def index
     @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(3)
@@ -23,6 +23,14 @@ class PrototypesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @prototype.save
+    redirect_to :root, notice: 'The prototype was successfully updated'
+    else
+    redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully updated'
+    end
   end
   private
 
