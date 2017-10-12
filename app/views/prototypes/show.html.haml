@@ -8,9 +8,11 @@
         .media-body
           %h4#top-aligned-media.media-heading
             = @prototype.title
+            = link_to "delete","/prototypes/#{@prototype.id}", method: :DELETE, class:"btn btn-xs navbar-inverse"
           .proto-user
             by
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
+
             .degree
               = @prototype.user.position
   .row
