@@ -5,6 +5,17 @@
 .delete-container {
   text-align: center;
   margin: 0 auto;
+  font-size: 24px;
+  background-color: #FFF;
+  width: calc(100vw - 600px);
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid, #eee;
+  border-radius: 2px;
+
+  &__redirect-to-root {
+      font-size: 14px;
+  }
 }
 body {
   font-family: "Lato", 'Helvetica Neue, Helvetica, Arial', sans-serif;
