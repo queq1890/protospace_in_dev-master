@@ -1,6 +1,13 @@
 /* -- import Roboto Font ------------------------------ */
 @import "//fonts.googleapis.com/css?family=Lato:300,400,700";
 
+.preview {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
 /*-- Body style ---------------------------------- */
 .delete-container {
   text-align: center;
