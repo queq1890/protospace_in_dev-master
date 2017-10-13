@@ -26,12 +26,13 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    if @prototype.save
-    redirect_to :root, notice: 'The prototype was successfully updated'
+    if @prototype.update(prototype_params)
+      redirect_to :root, notice: 'The prototype was successfully updated'
     else
-    redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully updated'
+      redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully updated'
     end
   end
+
   private
 
   def set_prototype
