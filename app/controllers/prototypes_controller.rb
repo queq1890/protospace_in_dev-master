@@ -1,4 +1,5 @@
 class PrototypesController < ApplicationController
+
   before_action :set_prototype, only: [:show, :edit, :update]
 
   def index
@@ -26,7 +27,7 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    if @prototype.update(prototype_params)
+    if @prototype.update(update_params)
       redirect_to :root, notice: 'The prototype was successfully updated'
     else
       redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully updated'
@@ -48,4 +49,15 @@ class PrototypesController < ApplicationController
       captured_images_attributes: [:content, :status]
     )
   end
+
+  def update_params
+    params.require(:prototype).permit(
+      :title,
+      :catch_copy,
+      :concept,
+      :user_id,
+    captured_images_attributes: [:id, :_destroy, :content, :status]
+    )
+  end
+
 end
