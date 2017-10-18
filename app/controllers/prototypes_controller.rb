@@ -26,6 +26,7 @@ class PrototypesController < ApplicationController
   def edit
     @main = @prototype.captured_images.where(status: 0).first
     @sub = @prototype.captured_images.where(status: 1)
+    @prototype.captured_images.build
   end
 
   def update
