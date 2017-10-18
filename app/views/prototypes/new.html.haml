@@ -23,8 +23,8 @@
                 .image-upload
                   = f.fields_for :captured_images do |image|
                     .preview_sub
-                      = image.file_field :content, id:"sub_file"
-                      = image.hidden_field :status, value: "sub"
+                    = image.file_field :content, id:"sub_file"
+                    = image.hidden_field :status, value: "sub"
       .row.proto-description
         .col-md-12
           %h4 Catch Copy
