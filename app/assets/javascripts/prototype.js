@@ -24,6 +24,7 @@ $(function(){
   $('input[type="file"][id="sub_file"]').on('change', function(e) {
     var file = e.target.files[0],
         reader = new FileReader(),
+        t = this;
 
     if(file.type.indexOf("image") < 0){
       return false;
@@ -31,8 +32,8 @@ $(function(){
 
     reader.onload = (function(file) {
       return function(e) {
-        $(this).prev().empty();
-        $(this).prev().append($('<img>').attr({
+        $(t).prev().empty();
+        $(t).prev().append($('<img>').attr({
                   src: e.target.result,
                   class: "preview",
                   title: file.name
