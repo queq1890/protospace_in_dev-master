@@ -16,7 +16,7 @@ class PrototypesController < ApplicationController
       redirect_to :root, notice: 'New prototype was successfully created'
     else
       redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
-     end
+    end
   end
 
   def show
@@ -33,6 +33,8 @@ class PrototypesController < ApplicationController
       redirect_to :root, notice: 'The prototype was successfully updated'
     else
       redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully updated'
+    end
+  end
 
   def destroy
     if @prototype.user_id == current_user.id
