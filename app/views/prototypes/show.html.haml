@@ -8,11 +8,11 @@
         .media-body
           %h4#top-aligned-media.media-heading
             = @prototype.title
+            = link_to "delete","/prototypes/#{@prototype.id}", method: :DELETE, class:"btn btn-xs navbar-inverse"
+            = link_to 'edit',"/prototypes/#{@prototype.id}/edit", class:"btn btn-xs navbar-inverse"
           .proto-user
-          by
-          = link_to "#{@prototype.user.name}", user_path(@prototype.user)
-          .edit_and_delete_btns
-            = link_to 'edit',"/prototypes/#{@prototype.id}/edit"
+            by
+            = link_to "#{@prototype.user.name}", user_path(@prototype.user)
 
             .degree
               = @prototype.user.position

@@ -1,6 +1,5 @@
 class PrototypesController < ApplicationController
-
-  before_action :set_prototype, only: [:show, :edit, :update]
+  before_action :set_prototype, only: [:show, :edit, :update,:destroy]
 
   def index
     @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(3)
@@ -34,6 +33,11 @@ class PrototypesController < ApplicationController
       redirect_to :root, notice: 'The prototype was successfully updated'
     else
       redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully updated'
+
+  def destroy
+    if @prototype.user_id == current_user.id
+    @prototype.destroy
+    redirect_to :root, notice: 'prototype was deleted'
     end
   end
 
