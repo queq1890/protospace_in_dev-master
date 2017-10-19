@@ -12,8 +12,8 @@
           %h4 Main Thumbnail
           .cover-image-upload#main_image_uploader
             = f.fields_for :captured_images do |image|
-              %img
-              = image.file_field :content, required: true
+              .preview_main
+              = image.file_field :content, required: true, id:"main_file"
               = image.hidden_field :status, value: "main"
         .col-md-12
           %h4 Sub Thumbnails
@@ -22,8 +22,8 @@
               %li.list-group-item.col-md-4
                 .image-upload
                   = f.fields_for :captured_images do |image|
-                    %img
-                    = image.file_field :content
+                    .preview_sub
+                    = image.file_field :content, id:"sub_file"
                     = image.hidden_field :status, value: "sub"
       .row.proto-description
         .col-md-12
