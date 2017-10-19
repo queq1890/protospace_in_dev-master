@@ -27,6 +27,8 @@ class PrototypesController < ApplicationController
     @main = @prototype.captured_images.where(status: 0).first
     @sub = @prototype.captured_images.where(status: 1)
     @prototype.captured_images.build
+    @prototype.tag.build
+    @tags = @prototype.tags
   end
 
   def update
@@ -57,7 +59,8 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       captured_images_attributes: [:content, :status]
-    )
+      tags_attributes: [:name]
+     )
   end
 
   def update_params
