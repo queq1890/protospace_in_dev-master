@@ -1,4 +1,5 @@
 class PrototypesController < ApplicationController
+  require'pry'
   before_action :set_prototype, only: [:show, :edit, :update,:destroy]
 
   def index
@@ -32,6 +33,7 @@ class PrototypesController < ApplicationController
   end
 
   def update
+    binding.pry
     if @prototype.update(update_params)
       redirect_to :root, notice: 'The prototype was successfully updated'
     else
@@ -70,7 +72,9 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-    captured_images_attributes: [:id, :_destroy, :content, :status]
+      tag_ids: [],
+      captured_images_attributes: [:id, :_destroy, :content, :status],
+      tags_attributes: [:id, :_destroy, :name]
     )
   end
 

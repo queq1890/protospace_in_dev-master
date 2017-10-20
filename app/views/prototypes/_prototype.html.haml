@@ -9,3 +9,6 @@
           = link_to prototype.user.name, user_path(prototype.user)
         .proto-posted
           = prototype.posted_date
+      .proto-tags
+        - prototype.tags.each do |t|
+          = link_to t.name, tag_path(t), class:"btn btn-default"
