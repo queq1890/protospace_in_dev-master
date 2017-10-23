@@ -13,6 +13,7 @@
           .cover-image-upload#main_image_uploader
             = f.fields_for :captured_images,@main do |image|
               .preview_main
+                = image_tag @main.content, class:"preview"
               = image.file_field :content, required: true, id:"main_file"
               = image.hidden_field :status, value: "main"
         .col-md-12
