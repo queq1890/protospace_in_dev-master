@@ -14,6 +14,12 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = Prototype.new(prototype_params)
+    tags = []
+    @prototype.tags.each do |tag|
+      _tag = Tag.find_or_create_by(name: tag.name)
+      tags <<_tag
+    end
+    @prototype.tags = tags
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
@@ -33,7 +39,6 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    binding.pry
     if @prototype.update(update_params)
       redirect_to :root, notice: 'The prototype was successfully updated'
     else
