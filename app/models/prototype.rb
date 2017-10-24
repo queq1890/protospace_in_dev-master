@@ -5,7 +5,7 @@ class Prototype < ActiveRecord::Base
   has_many :captured_images, dependent: :destroy
 
   accepts_nested_attributes_for :captured_images, reject_if: :reject_sub_images
-  accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :tags, reject_if: :reject_tags
 
   validates :title,
             :catch_copy,
@@ -23,4 +23,9 @@ class Prototype < ActiveRecord::Base
   def posted_date
     created_at.strftime('%b %d %a')
   end
+
+  def reject_tags(attributed)
+    attributed['name'].blank?
+  end
+
 end

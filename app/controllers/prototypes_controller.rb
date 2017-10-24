@@ -33,12 +33,19 @@ class PrototypesController < ApplicationController
   def edit
     @main = @prototype.captured_images.where(status: 0).first
     @sub = @prototype.captured_images.where(status: 1)
+    @new_sub = @prototype.captured_images.where(status: 1).build
     @prototype.captured_images.build
-    @prototype.tags.build
-    @tags = @prototype.tags
+    @tag = @prototype.tags
   end
 
   def update
+    binding.pry
+    tags = []
+    @prototype.tags.each do |tag|
+      _tag = Tag.find_or_create_by(name: tag.name)
+      tags <<_tag
+    end
+    @prototype.tags = tags
     if @prototype.update(update_params)
       redirect_to :root, notice: 'The prototype was successfully updated'
     else
