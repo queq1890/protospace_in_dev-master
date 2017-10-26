@@ -3,7 +3,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :update,:destroy]
 
   def index
-    @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(3)
+    @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(6)
   end
 
   def new
@@ -34,14 +34,13 @@ class PrototypesController < ApplicationController
     @main = @prototype.captured_images.where(status: 0).first
     @sub = @prototype.captured_images.where(status: 1)
     @new_sub = @prototype.captured_images.where(status: 1).build
-    @prototype.captured_images.build
-    @tag = @prototype.tags
+    @tags = @prototype.tags
   end
 
   def update
-    binding.pry
+    _prototype = Prototype.new(prototype_params)
     tags = []
-    @prototype.tags.each do |tag|
+    _prototype.tags.each do |tag|
       _tag = Tag.find_or_create_by(name: tag.name)
       tags <<_tag
     end
@@ -86,7 +85,6 @@ class PrototypesController < ApplicationController
       :user_id,
       tag_ids: [],
       captured_images_attributes: [:id, :_destroy, :content, :status],
-      tags_attributes: [:id, :_destroy, :name]
     )
   end
 
