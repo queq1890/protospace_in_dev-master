@@ -1,4 +1,4 @@
-lock '3.91'
+lock '3.9.1'
 
 set :application, 'protospace_in_dev-master'
 set :repo_url,  'git@github.com:queq1890/protospace_in_dev-master.git'
