@@ -5,6 +5,8 @@
         .media-left
           = link_to user_path(@prototype.user) do
             = image_tag(@prototype.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+        .media-right
+          = render partial: 'likes/like', collections: @likes
         .media-body
           %h4#top-aligned-media.media-heading
             = @prototype.title
