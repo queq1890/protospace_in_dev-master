@@ -42,5 +42,13 @@
         .col-md-12
           %h4 Concept
           = f.text_area :concept, require: true, placeholder: "Input Concept"
+        .col-md-12
+          %h4 Tag
+          = f.fields_for :tags,@tags do |tag|
+            = tag.text_field :name, placeholder: "Input Tag",value: @tags[tag.index - 1].name
+
+          - (3 - @tags.length).times do |i|
+            = f.fields_for :tags,@prototype.tags.build do |tag|
+              = tag.text_field :name, placeholder: "Input Tag"
       .row.text-center.proto-btn
         = f.submit "UPDATE", id: "button", class: "btn btn-lg btn-primary btn-block"

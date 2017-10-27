@@ -21,7 +21,7 @@
             - 3.times do |i|
               %li.list-group-item.col-md-4
                 .image-upload
-                  = f.fields_for :captured_images, nil do |image|
+                  = f.fields_for :captured_images do |image|
                     .preview_sub
                     = image.file_field :content, id:"sub_file"
                     = image.hidden_field :status, value: "sub"
@@ -32,5 +32,10 @@
         .col-md-12
           %h4 Concept
           = f.text_area :concept, require: true, placeholder: "Input Concept"
+        .col-md-12
+          %h4 Tag
+          - 3.times do |i|
+            = f.fields_for :tags do |tag|
+              = tag.text_field :name, placeholder: "Input Tag"
       .row.text-center.proto-btn
         = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"
