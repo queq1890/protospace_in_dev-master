@@ -3,6 +3,7 @@ lock '3.9.1'
 set :application, 'protospace_in_dev-master'
 set :repo_url,  'git@github.com:queq1890/protospace_in_dev-master.git'
 
+set :linked_files, %w{ config/secrets.yml }
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rbenv_type, :user

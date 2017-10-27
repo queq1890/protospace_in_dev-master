@@ -17,6 +17,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'kaminari'
 gem 'therubyracer', platforms: :ruby
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
