@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: heroku_deb93160fbd8b0b
-  username: b318c02a1ff06a
-  password: <%= ENV['3b399988'] %>
+  database: protospace-in-dev_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
