@@ -1,6 +1,6 @@
 class Prototype < ActiveRecord::Base
   belongs_to :user
-  has_many :prototype_tags, dependent: :delete_all, unique: true
+  has_many :prototype_tags, dependent: :delete_all
   has_many :tags, through: :prototype_tags
   has_many :captured_images, dependent: :destroy
 
